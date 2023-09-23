@@ -1,0 +1,75 @@
+<h1 mat-dialog-title>Fill User Details</h1>
+<div mat-dialog-content>
+
+    <form [formGroup]="addUserForm">
+
+
+
+
+        <div class="row">
+            <div class="col">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Employee name" formControlName="name" required (keypress)="allowAlphabetsAndSpaces($event)">
+                    <mat-error>
+                    <div *ngIf="formControl.name.invalid && (formControl.name.dirty || formControl.name.touched) " class="form-text text-danger">
+                      <div *ngIf="formControl.name.errors?.['required']">
+                        Must Enter Name
+                      </div>
+                      
+                    </div>
+                  </mat-error>
+                    
+                </mat-form-field>
+
+
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="official-Email" formControlName="email" required>
+                    <mat-error>
+                    <div *ngIf="formControl.
+                  email.invalid && 
+                  (formControl.email.dirty || formControl.email.touched) " class="form-text text-danger">
+                      <div *ngIf="formControl.email.errors?.['required']">
+                        Must Enter email
+                      </div>
+                      <div *ngIf="formControl.email.errors?.['pattern']">
+                        Invalid email
+                      </div>
+                    </div>
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Mobile</mat-label>
+                    <input matInput placeholder="Mobile" formControlName="mobileNo" required>
+                    <mat-error>
+                    <div *ngIf="formControl.mobileNo.invalid &&
+                (formControl.mobileNo.dirty || formControl.mobileNo.touched || formControl.mobileNo.untouched)"
+                      class="form-text text-danger">
+                      <div *ngIf="formControl. mobileNo.errors?.['required']">
+                        Field is required
+                      </div>
+                      <div *ngIf="formControl.mobileNo.errors?.['pattern']">
+                        Enter A valid Number.  
+                      </div>
+                    </div>
+                  </mat-error>
+                </mat-form-field>
+
+                
+
+                
+
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button mat-raised-button color="Primary" style="margin-left: 10px;" (click)='addUser()'>{{actionbtn}}</button>
+</div>
